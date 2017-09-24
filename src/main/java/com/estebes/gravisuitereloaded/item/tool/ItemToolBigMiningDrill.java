@@ -3,6 +3,7 @@ package com.estebes.gravisuitereloaded.item.tool;
 import com.estebes.gravisuitereloaded.item.ItemElectricTool;
 import ic2.api.item.ElectricItem;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,6 +25,8 @@ import java.util.Locale;
 
 public class ItemToolBigMiningDrill extends ItemElectricTool {
     protected double operationCost;
+
+    public static Material[] drillMaterials = { Material.anvil, Material.clay, Material.glass, Material.grass, Material.ground, Material.ice, Material.iron, Material.packedIce, Material.piston, Material.rock, Material.sand, Material.snow, Material.tnt };
 
     public ItemToolBigMiningDrill(String name, int energyTier, double maxCharge, double transferLimit, boolean providesEnergy, double operationCost) {
         super(name, energyTier, maxCharge, transferLimit, providesEnergy);
@@ -170,10 +173,12 @@ public class ItemToolBigMiningDrill extends ItemElectricTool {
 
     @Override
     public boolean canHarvestBlock(Block block, ItemStack itemStack) {
-        return (Items.iron_pickaxe.canHarvestBlock(block, itemStack) ||
-                Items.iron_pickaxe.func_150893_a(itemStack, block) > 1.0F ||
-                Items.iron_shovel.canHarvestBlock(block, itemStack) ||
-                Items.iron_shovel.func_150893_a(itemStack, block) > 1.0F);
+        for (Material m : drillMaterials) {
+          if (m == block.getMaterial()) {
+            return true;
+          }
+        }
+        return false;
     }
 
     @Override

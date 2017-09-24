@@ -38,14 +38,6 @@ public class ItemToolBigIridiumDrill extends ItemToolBigMiningDrill {
     }
 
     @Override
-    public boolean canHarvestBlock(Block block, ItemStack stack) {
-        return (Items.diamond_pickaxe.canHarvestBlock(block, stack) ||
-                Items.diamond_pickaxe.func_150893_a(stack, block) > 1.0F ||
-                Items.diamond_shovel.canHarvestBlock(block, stack) ||
-                Items.diamond_shovel.func_150893_a(stack, block) > 1.0F);
-    }
-
-    @Override
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityplayer) {
         if (FMLCommonHandler.instance().getEffectiveSide().isClient()) {
             return itemStack;
