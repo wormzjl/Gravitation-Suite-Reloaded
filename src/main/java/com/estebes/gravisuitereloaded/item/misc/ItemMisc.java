@@ -9,18 +9,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
 public class ItemMisc extends Item {
-    protected String itemName;
+    private String name;
 
-    public ItemMisc(String itemName, int maxStackSize) {
-        this.itemName = itemName;
+    public ItemMisc(String name, int maxStackSize) {
+        this.name = name;
 
         this.maxStackSize = maxStackSize;
-        this.setUnlocalizedName(this.itemName);
+        this.setUnlocalizedName(this.name);
     }
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(Reference.LOWERCASE_MOD_ID + ":" + this.itemName);
+        this.itemIcon = iconRegister.registerIcon(Reference.LOWERCASE_MOD_ID + ":" + this.name);
     }
 
     @SideOnly(Side.CLIENT)
